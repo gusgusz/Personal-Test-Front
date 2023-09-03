@@ -19,10 +19,9 @@ export class ContainerComponent {
   selectedItem: string | null = null;
   selectedPage: string | null = 'Users';
 
-  onSelectionChange(page: any) {
+  onSelectionChange(page: string) {
     this.selectedPage = page;
   }
-
 
 
 

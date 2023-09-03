@@ -26,3 +26,8 @@
   .selected-item {
     background-color: rgb(82, 88, 81);
   }
+
+  .paginator{
+    position: fixed;
+    bottom: 0;
+  }

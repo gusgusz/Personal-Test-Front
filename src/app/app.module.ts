@@ -27,7 +27,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; /
 
 import { Component } from '@angular/core';
 
-
+import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSelectionList } from '@angular/material/list';
 import { LoadingComponent } from './components/loading/loading.component';
 import { PostsComponent } from './components/posts/posts.component';
@@ -44,6 +44,7 @@ import { PostsComponent } from './components/posts/posts.component';
   ],
   imports: [
     HttpClientModule,
+    MatPaginatorModule,
     TopBarComponent,
     BrowserModule,
     CommonModule,

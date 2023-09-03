@@ -1,8 +1,5 @@
-
-
-<mat-selection-list [multiple]="false" [(ngModel)]="selectedPage" >
+<mat-selection-list [multiple]="false" >
   <mat-drawer-container class="example-container" autosize>
-    
     <ng-container [ngSwitch]="selectedPage">
       <ng-container *ngSwitchCase="'Users'">
         <app-users></app-users>
@@ -18,7 +15,7 @@
       mode="side"
       [opened]="drawerOpen$ | async"
     >
-      <mat-selection-list #pages [multiple]="false" [(ngModel)]="selectedPage">
+      <mat-selection-list #pages [multiple]="false" >
         <mat-list-item
           *ngFor="let page of typesOfPages"
           (click)="onSelectionChange(page)"
@@ -30,3 +27,12 @@
     </mat-drawer>
   </mat-drawer-container></mat-selection-list
 >
+
+<mat-paginator
+  [length]="50"
+  [pageSize]="5"
+  [pageSizeOptions]="[5, 10, 25, 50]"
+  aria-label="Select page"
+  class=".paginator"
+>
+</mat-paginator>
