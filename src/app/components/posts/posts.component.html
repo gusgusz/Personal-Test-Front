@@ -1,6 +1,4 @@
-<div *ngIf="loading$ | async">
-  <app-loading></app-loading>
-</div>
+
 
 <mat-accordion class="headers-align">
   <mat-expansion-panel hideToggle #userPanel>
@@ -53,6 +51,10 @@
   </mat-form-field>
 </form>
 
+<div *ngIf="loading$ | async">
+  <app-loading></app-loading>
+</div>
+
 <ng-container>
   <mat-card *ngIf="posts.length === 0">
     <mat-card-title>No Posts Found</mat-card-title>
@@ -102,3 +104,6 @@
       <button mat-button (click)="deletePost(post.id)" *ngIf="!post.isEditing">
         <mat-icon>delete</mat-icon>
       </button>
+    </mat-card-actions>
+  </mat-card>
+</mat-card>

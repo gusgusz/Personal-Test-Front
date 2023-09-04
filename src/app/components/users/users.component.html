@@ -1,6 +1,4 @@
-<div *ngIf="loading$ | async">
-  <app-loading></app-loading>
-</div>
+
 
 <mat-accordion class="headers-align">
   <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
@@ -51,7 +49,11 @@
     <input type="tel" matInput placeholder="Search" name="search" [(ngModel)]="search">
     <button matSuffix mat-button (click)="searchUsers(search)"><mat-icon>search</mat-icon></button>
   </mat-form-field>
+
 </form>
+<div *ngIf="loading$ | async">
+  <app-loading></app-loading>
+</div>
 <ng-container>
   <mat-card *ngIf="users.length === 0">
     <mat-card-title>No Users Found</mat-card-title>
