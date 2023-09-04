@@ -39,6 +39,11 @@ export class UsersComponent {
     });
   }
 
+
+toggleEditMode(user: any) {
+  user.isEditing = !user.isEditing;
+}
+
   step = 0;
 
   setStep(index: number) {

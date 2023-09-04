@@ -21,17 +21,17 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatExpansionModule} from '@angular/material/expansion';
+import {MatExpansionModule,  MatAccordion } from '@angular/material/expansion';
 import {MatNativeDateModule} from '@angular/material/core';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // Importe MatProgressSpinnerModule
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
 import { Component } from '@angular/core';
-
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatSelectionList } from '@angular/material/list';
 import { LoadingComponent } from './components/loading/loading.component';
 import { PostsComponent } from './components/posts/posts.component';
-
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -43,19 +43,22 @@ import { PostsComponent } from './components/posts/posts.component';
     PostsComponent,
   ],
   imports: [
+
+    TopBarComponent,
     HttpClientModule,
     MatPaginatorModule,
-    TopBarComponent,
     BrowserModule,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatListModule,
+    MatSelectModule,
     MatToolbarModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    SideBarComponent,
+    MatSidenavModule,
     MatButtonModule,
     MatCardModule,
     MatDatepickerModule,
@@ -63,9 +66,7 @@ import { PostsComponent } from './components/posts/posts.component';
     MatFormFieldModule,
     MatExpansionModule,
     MatNativeDateModule,
-    NgIf,
-    MatSidenavModule,
-    
+    MatButtonToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

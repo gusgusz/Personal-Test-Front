@@ -11,3 +11,26 @@
   
   }
   
+  .header{
+    display: flex;
+    align-items: center;
+   
+  }
+
+  .gender-icon {
+    margin-right: 8px;
+  }
+  
+
+  .card {
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+ 
+  ::ng-deep .mat-select-panel .mat-option.mat-selected {
+    color: white; /* Define a cor do texto como branco para contraste */
+  }
