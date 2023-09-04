@@ -15,9 +15,9 @@ export class ContainerComponent {
   drawerOpen$ = this.drawerService.drawerOpen$;
   showFiller = false;
 
-  typesOfPages: string[] = ['Users', 'Posts', 'To Do'];
+  typesOfPages: string[] = ['Posts', 'Users'];
   selectedItem: string | null = null;
-  selectedPage: string | null = 'Users';
+  selectedPage: string | null = 'Posts';
 
   onSelectionChange(page: string) {
     this.selectedPage = page;

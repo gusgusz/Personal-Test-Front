@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { ContainerComponent } from './components/container/container.component';
-import { SideBarComponent } from './components/side-bar/side-bar.component';
-import { BottomComponent } from './components/bottom/bottom.component';
 import {MatToolbarModule} from '@angular/material/toolbar'; 
 import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
@@ -39,7 +37,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
-    BottomComponent,
     UsersComponent,
     ContainerComponent,
     LoadingComponent,
