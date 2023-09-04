@@ -18,7 +18,7 @@ enum Status {
 }
 
 type User = {
-  id: number;
+  id?: number;
   name: string;
   email: string;
   gender: Gender;
@@ -37,12 +37,13 @@ export class UsersComponent {
 
   users: any[] = []; 
   newUser: User = {
-    id: 0, 
     name: '',
     email: '',
     gender: Gender.Male, 
     status: Status.Active, 
   };
+
+  
   
   
 
@@ -91,6 +92,35 @@ postUser(user: User) {
     this.users = [user,...this.users];
   });
 }
+putUser(userId: number, user: User) {
+  this.usersService.putUser(userId, user).pipe(
+    catchError((error) => {
+      console.error('Ocorreu um erro ao atualizar o usuário:', error);
+      return throwError(() => error);
+    })
+  ).subscribe((data: any) => {
+    const updatedUsers = this.users.map((u) => (u.id === userId ? data : u));
+    this.users = updatedUsers;
+  });
+}
+
+executeEditAndPut(user: any) {
+  this.toggleEditMode(user);
+  this.putUser(user.id, user);
+}
+
+
+deleteUser(userId: number) {
+  this.usersService.deleteUser(userId).pipe(
+    catchError((error) => {
+      console.error('Ocorreu um erro ao excluir o usuário:', error);
+      return throwError(() => error);
+    })
+  ).subscribe(() => {
+    this.users = this.users.filter((user) => user.id !== userId);
+  });
+}
+
 
 
   step = 0;

@@ -39,5 +39,13 @@ export class UsersService {
     const url = `${environment.apiUrl + '/users'}/${userId}`;
     return this.http.put(url, user, { headers });
   }
+
+  deleteUser(userId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      Authorization: 'Bearer ' + environment.token,
+    });
+    const url = `${environment.apiUrl}/users/${userId}`;
+    return this.http.delete(url, { headers });
+  }
 }
 

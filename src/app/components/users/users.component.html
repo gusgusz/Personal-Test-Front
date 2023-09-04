@@ -1,105 +1,68 @@
 <div *ngIf="loading$ | async">
   <app-loading></app-loading>
 </div>
-<mat-accordion class="headers-align">
-  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        User
-      </mat-panel-title>
-      <mat-panel-description>
-        Create a New User
-        <mat-icon>account_circle</mat-icon>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-
-    <form (submit)="postUser(newUser)">
- 
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="newUser.name" name="name" required>
-      </mat-form-field>
-
-   
-      <mat-form-field>
-        <mat-label>Email</mat-label>
-        <input matInput [(ngModel)]="newUser.email" name="email" type="email" required>
-      </mat-form-field>
-
-      
-      <mat-form-field>
-        <mat-label>Gender</mat-label>
-        <mat-select [(ngModel)]="newUser.gender" name="gender" required>
-          <mat-option value="male">Male</mat-option>
-          <mat-option value="female">Female</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-action-row>
-        <button mat-button color="white" type="submit">Create</button>
-      </mat-action-row>
-    </form>
-  </mat-expansion-panel>
-</mat-accordion>
-
 <mat-card #users  *ngFor="let user of users"> 
-   <mat-card class="card">
+  <mat-card class="card">
     <div class="header">
       
-    <mat-card-header>
-      <mat-card-title>
-        <ng-container *ngIf="!user.isEditing; else editModeN">
-          {{ user.name }}
-        </ng-container>
-        <ng-template #editModeN>
-          <mat-form-field>
-          <mat-label>Name</mat-label>
-          <input matInput [(ngModel)]="user.name" />
-        </mat-form-field>
-        </ng-template>
-      </mat-card-title>
-      <mat-card-subtitle>
-        <ng-container *ngIf="!user.isEditing; else editModeEmail">
-          {{ user.email }}
-        </ng-container>
-        <ng-template #editModeEmail>
-          <mat-form-field>
-            <mat-label>Email</mat-label>
-          <input matInput [(ngModel)]="user.email" />
-        </mat-form-field>
-        </ng-template>
-      </mat-card-subtitle>
-    </mat-card-header>
+      <mat-card-header>
+        <mat-card-title>
+          <ng-container *ngIf="!user.isEditing; else editModeN">
+            {{ user.name }}
+          </ng-container>
+          <ng-template #editModeN>
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput [(ngModel)]="user.name" />
+            </mat-form-field>
+          </ng-template>
+        </mat-card-title>
+        <mat-card-subtitle>
+          <ng-container *ngIf="!user.isEditing; else editModeEmail">
+            {{ user.email }}
+          </ng-container>
+          <ng-template #editModeEmail>
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput [(ngModel)]="user.email" />
+            </mat-form-field>
+          </ng-template>
+        </mat-card-subtitle>
+      </mat-card-header>
 
-    <ng-container *ngIf="!user.isEditing; else editModeGender">
-      <mat-icon class="gender-icon">{{ user.gender }}</mat-icon>
-    </ng-container>
-    <ng-template #editModeGender>
-      <mat-form-field>
-        <mat-label>Gender</mat-label>
-        <mat-select  [(ngModel)]="user.gender">
-          <mat-option  value="male" >
-            <mat-icon class="gender-icon">male</mat-icon>
-            male
-          </mat-option>
-          <mat-option  value="female" >
-            <mat-icon class="gender-icon">female</mat-icon> 
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </ng-template>
-</div>
+      <ng-container *ngIf="!user.isEditing; else editModeGender">
+        <mat-icon class="gender-icon">{{ user.gender }}</mat-icon>
+      </ng-container>
+      <ng-template #editModeGender>
+        <mat-form-field>
+          <mat-label>Gender</mat-label>
+          <mat-select  [(ngModel)]="user.gender">
+            <mat-option  value="male" >
+              <mat-icon class="gender-icon">male</mat-icon>
+              male
+            </mat-option>
+            <mat-option  value="female" >
+              <mat-icon class="gender-icon">female</mat-icon> 
+              female
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-template>
+    </div>
 
     <mat-card-actions>
-      <button mat-button (click)="toggleEditMode(user)">
-        <mat-icon>{{ user.isEditing ? 'save' : 'edit' }}</mat-icon>
+      <button mat-button (click)="executeEditAndPut(user)">
+        <mat-icon *ngIf="user.isEditing" >save</mat-icon>
+      </button>
+      <button mat-button (click)="toggleEditMode(user)" *ngIf="!user.isEditing">
+        <mat-icon>edit</mat-icon>
       </button>
       <button mat-button (click)="toggleEditMode(user)" *ngIf="user.isEditing">
-      <mat-icon >cancel</mat-icon>
+        <mat-icon >cancel</mat-icon>
       </button>
-      <button mat-button  *ngIf="!user.isEditing">
+      <button mat-button (click)="deleteUser(user.id)" *ngIf="!user.isEditing">
         <mat-icon>delete</mat-icon>
       </button>
     </mat-card-actions>
   </mat-card>
-  
+</mat-card>
