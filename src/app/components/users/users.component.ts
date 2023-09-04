@@ -54,13 +54,24 @@ export class UsersComponent {
   ) {}
 
   loading$!: Observable<boolean>;
- 
+  search: string = "";
 
 
   ngOnInit() {
     this.getUsers();
   }
 
+
+  searchUsers(search: string){
+    if(search.length >= 3){
+      this.loading$ = this.loadingService.loading$; 
+      this.loadingService.show(); 
+      this.usersService.searchUsers(search).subscribe((data: any) => {
+        this.users = data;
+        this.loadingService.hide(); 
+      });
+    }
+  }
   getUsers() {
     if (this.users.length === 0) {
       this.loading$ = this.loadingService.loading$; 

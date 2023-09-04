@@ -21,6 +21,11 @@ export class UsersService {
     return this.http.get(url);
   }
 
+  searchUsers(search: string){
+    const url = `${environment.apiUrl + '/users?name='+ search}`;
+    return this.http.get(url);
+  }
+
   postUser(user: any): Observable<any> {
    
     const headers = new HttpHeaders({
