@@ -2,37 +2,45 @@
   <app-loading></app-loading>
 </div>
 <mat-accordion class="headers-align">
-    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          User
-        </mat-panel-title>
-        <mat-panel-description>
-          Create a New User
-          <mat-icon>account_circle</mat-icon>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-  
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        User
+      </mat-panel-title>
+      <mat-panel-description>
+        Create a New User
+        <mat-icon>account_circle</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <form (submit)="postUser(newUser)">
+ 
       <mat-form-field>
         <mat-label>Name</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="newUser.name" name="name" required>
       </mat-form-field>
 
-
+   
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input matInput type="email" min="5">
+        <input matInput [(ngModel)]="newUser.email" name="email" type="email" required>
       </mat-form-field>
-  
+
+      
       <mat-form-field>
         <mat-label>Gender</mat-label>
-        <input matInput type="gender" min="5">
+        <mat-select [(ngModel)]="newUser.gender" name="gender" required>
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="female">Female</mat-option>
+        </mat-select>
       </mat-form-field>
-      <mat-action-row>
-        <button mat-button color="white" (click)="nextStep()">Create</button>
-      </mat-action-row>
-    </mat-expansion-panel>
 
+      <mat-action-row>
+        <button mat-button color="white" type="submit">Create</button>
+      </mat-action-row>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>
 
 <mat-card #users  *ngFor="let user of users"> 
    <mat-card class="card">
