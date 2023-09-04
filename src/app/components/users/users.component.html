@@ -52,7 +52,11 @@
     <button matSuffix mat-button (click)="searchUsers(search)"><mat-icon>search</mat-icon></button>
   </mat-form-field>
 </form>
-
+<ng-container>
+  <mat-card *ngIf="users.length === 0">
+    <mat-card-title>No Users Found</mat-card-title>
+  </mat-card>
+</ng-container>
 <mat-card #users class="card" *ngFor="let user of users"> 
   <mat-card >
     <div class="header">
