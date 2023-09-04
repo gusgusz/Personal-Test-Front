@@ -33,7 +33,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +42,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     PostsComponent,
   ],
   imports: [
-
     TopBarComponent,
     HttpClientModule,
     MatPaginatorModule,
@@ -64,7 +62,6 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatButtonModule,
     MatCardModule,
     MatDatepickerModule,
-    MatInputModule,
     MatFormFieldModule,
     MatExpansionModule,
     MatNativeDateModule,

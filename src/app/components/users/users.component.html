@@ -108,8 +108,8 @@
     </div>
 
     <mat-card-actions>
-      <button mat-button (click)="executeEditAndPut(user)">
-        <mat-icon *ngIf="user.isEditing">save</mat-icon>
+      <button *ngIf="user.isEditing" mat-button (click)="executeEditAndPut(user)">
+        <mat-icon >save</mat-icon>
       </button>
       <button mat-button (click)="toggleEditMode(user)" *ngIf="!user.isEditing">
         <mat-icon>edit</mat-icon>
