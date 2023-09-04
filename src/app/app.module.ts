@@ -32,6 +32,9 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { PostsComponent } from './components/posts/posts.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatSelectModule } from '@angular/material/select';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
+
 
 @NgModule({
   declarations: [
@@ -56,6 +59,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatListModule,
     MatSelectModule,
     MatToolbarModule,
+    MatAutocompleteModule,
+    MatInputModule,
     MatProgressSpinnerModule,
     MatIconModule,
     MatSidenavModule,

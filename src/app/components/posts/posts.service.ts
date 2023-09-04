@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 export class PostsService {
   constructor(private http: HttpClient) {}
 
+  
+
   getPosts() {
     const apiUrl = environment.apiUrl + '/posts';
     return this.http.get(apiUrl);
@@ -39,6 +41,11 @@ export class PostsService {
 
   searchPostsTitle(search: string){
     const url = `${environment.apiUrl + '/posts?title='+ search}`;
+    return this.http.get(url);
+  }
+
+  searchByUserName(name: string){
+    const url = `${environment.apiUrl + '/users?name='+ name}`;
     return this.http.get(url);
   }
 }

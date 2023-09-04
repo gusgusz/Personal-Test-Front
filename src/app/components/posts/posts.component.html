@@ -3,7 +3,7 @@
 </div>
 
 <mat-accordion class="headers-align">
-  <mat-expansion-panel hideToggle>
+  <mat-expansion-panel hideToggle #userPanel>
     <mat-expansion-panel-header>
       <mat-panel-title>
         Post
@@ -15,6 +15,19 @@
     </mat-expansion-panel-header>
 
     <form (submit)="createPost(newPost)">
+      <mat-form-field>
+        <mat-label>Search User</mat-label>
+        <input matInput [(ngModel)]="userSearch" [formControl]="userFormControl" (input)="onUserSearch()" [matAutocomplete]="auto" required>
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayUser" (optionSelected)="onOptionSelected($event)">
+          <mat-option *ngFor="let suggestion of userSuggestions" [value]="suggestion">
+            {{ suggestion.name }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      
+      
+
+
       <mat-form-field>
         <mat-label>Title</mat-label>
         <input matInput [(ngModel)]="newPost.title" name="title" required>
