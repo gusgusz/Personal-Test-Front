@@ -31,6 +31,3 @@
     align-items: flex-start;
   }
  
-  ::ng-deep .mat-select-panel .mat-option.mat-selected {
-    color: white; /* Define a cor do texto como branco para contraste */
-  }
